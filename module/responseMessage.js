@@ -26,4 +26,7 @@ module.exports = {
     POST_CONTENTS_SAVE_SUCCESS :"게시글 저장 성공",
     POST_READ_FAILE:"게시글 읽어오기 실패",
     POST_READ_SUCCESS : "게시글 읽어오기 성공",
+
+    CMT_DELETE_SUCCESS: "댓글 삭제 성공",
+    CMT_DELETE_FAIL:"댓글 삭제 실패"
 };
