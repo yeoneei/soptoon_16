@@ -26,4 +26,14 @@ module.exports = {
     POST_CONTENTS_SAVE_SUCCESS :"게시글 저장 성공",
     POST_READ_FAILE:"게시글 읽어오기 실패",
     POST_READ_SUCCESS : "게시글 읽어오기 성공",
+
+    POST_EPISODE_SUCCESS : "에피소드 등록 성공",
+    POST_EPISODE_FAIL : "에피소드 등록 실패",
+    GET_EPISODE_LIST_SUCCESS : "에피소드 리스트 조회",
+    GET_EPISODE_LIST_FAIL : "에피소드 리스트 실패",
+    DELETE_EPISODE_SUCCESS : "에피소드 삭제 성공",
+    DELETE_EPISODE_FAIL : "에피소드 삭제 실패",
+
+    GET_EPISODE_CUTS_SUCCESS : "에피소드 컷 조회 성공",    
+    GET_EPISODE_CUTS_FAIL : "에피소드 컷 조회 실패",
 };
