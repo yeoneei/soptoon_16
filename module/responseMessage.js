@@ -36,4 +36,7 @@ module.exports = {
 
     GET_EPISODE_CUTS_SUCCESS : "에피소드 컷 조회 성공",    
     GET_EPISODE_CUTS_FAIL : "에피소드 컷 조회 실패",
+    
+    CMT_DELETE_SUCCESS: "댓글 삭제 성공",
+    CMT_DELETE_FAIL:"댓글 삭제 실패"
 };
