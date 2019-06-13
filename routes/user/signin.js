@@ -6,13 +6,13 @@ Title: Server architecture for getting user's data from AWS RDS database using M
 
 var express = require('express');
 var router = express.Router();
-const async = require('async');
+
 const crypto = require('crypto-promise');
 
 const utils = require('../../module/utils');
 const statusCode = require('../../module/statusCode');
 const responseMessage = require('../../module/responseMessage');
-const db = require('../../config/pool');
+const db = require('../../module/pool');
 
 //URL: url/user/signin (post)
 router.post('/', async (req, res) => {
@@ -28,27 +28,26 @@ router.post('/', async (req, res) => {
         //hash the password
         //userInfo.salt 에 db에서 salt 값 꺼내와서 저장
         const selectSaltQuery='SELECT salt FROM user WHERE id=?';
-        const selectsaltResult=await db.queryParam_Parse(selectSaltQuery,userInfo.id);
-        if(!selectsaltResult){
+        const selectSaltResult=await db.queryParam_Parse(selectSaltQuery,userInfo.id);
+        if(!selectSaltResult){
             res.status(200).send(utils.successFalse(statusCode.BAD_REQUEST), responseMessage.NULL_VALUE);
         }
         else{
             console.log('↓dbsalt: ');
-            userInfo.salt=selectsaltResult[0].salt;
+            userInfo.salt=selectSaltResult[0].salt;
         }
 
         //hash 진행할 때 db salt 를 기준으로 req.password랑 hash 하기
-        const hashed = await crypto.pbkdf2(req.body.password, userInfo.salt, 1000, 32, 'SHA512');
+        const hashed = await crypto.pbkdf2(userInfo.password, userInfo.salt, 1000, 32, 'SHA512');
         
         //db에서 hashedPassword 값 꺼내오기
         //query
-        const selectQuery='SELECT hashedPassword FROM user WHERE id=?';
-        const selectResult=await db.queryParam_Parse(selectQuery,userInfo.id);
+        const selectQuery='SELECT hashed_password FROM user WHERE id=?';
+        const selectResult = await db.queryParam_Parse(selectQuery,userInfo.id);
             
-        console.log(selectResult[0].hashedPassword);
         console.log("↓ userInfo.hashedPw");
         console.log(hashed.toString('base64'));
-            if(selectResult[0].hashedPassword.toString('base64')==hashed.toString('base64')){
+            if(selectResult[0].hashed_password==hashed.toString('base64')){
                 res.status(200).send(utils.successTrue(statusCode.OK, responseMessage.LOGIN_SUCCESS));
             }
             else{

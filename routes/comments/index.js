@@ -13,7 +13,7 @@ const moment = require('moment');
 const utils = require('../../module/utils');
 const statusCode = require('../../module/statusCode');
 const responseMessage = require('../../module/responseMessage');
-const db = require('../../config/pool');
+const db = require('../../module/pool');
 const upload = require('../../config/multer');
 const pool = require('../../config/dbConfig');
 
