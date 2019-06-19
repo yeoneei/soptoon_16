@@ -38,5 +38,9 @@ module.exports = {
     GET_EPISODE_CUTS_FAIL : "에피소드 컷 조회 실패",
     
     CMT_DELETE_SUCCESS: "댓글 삭제 성공",
-    CMT_DELETE_FAIL:"댓글 삭제 실패"
+    CMT_DELETE_FAIL:"댓글 삭제 실패",
+    WEBTOON_SAVE_SUCCESS : "웹툰 저장 성공",
+    WEBTOON_SAVE_FAILE : "웹툰 저장 실패 ",
+    WEBTOON_REVISE_SUCCESS : "웹툰 수정 성공",
+    WEBTOON_REVISE_FAILE : "웹툰 수정 실패",
 };
