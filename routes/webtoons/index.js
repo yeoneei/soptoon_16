@@ -12,13 +12,15 @@ const moment = require('moment');
 router.use('/like',require('./like'));
 router.use('/main',require('./main'));
 
+
+//
 router.post('/', upload.single('thumb'), async(req,res)=>{
   const {title, author, category, like} = req.body;
   const thumb  = req.file.location;
 
   console.log(thumb);
   //널 처리 하기
-  const webtoonInsertQuery = "INSERT INTO spotoon.webtoon (wt_title,wt_author, wt_thumbnail,wt_like,wt_category) VALUES (?,?,?,?,?)";
+  const webtoonInsertQuery = "INSERT INTO webtoon (wt_title,wt_author, wt_thumbnail,wt_like,wt_category) VALUES (?,?,?,?,?)";
   let webtoonInsertResult;
   try{
     var connection = await pool.getConnection();
@@ -48,7 +50,7 @@ router.put('/:wt_idx', upload.single('thumb'), async(req,res)=>{
     var connection = await pool.getConnection();
     await connection.beginTransaction();
     
-    const getWebtoonQuery = "SELECT * from spotoon.webtoon WHERE wt_idx = ?";
+    const getWebtoonQuery = "SELECT * from webtoon WHERE wt_idx = ?";
     getWebtoonResult = await connection.query(getWebtoonQuery,[wt_idx]);
     const re ={
       title : title || getWebtoonResult[0].wt_title,
@@ -58,7 +60,7 @@ router.put('/:wt_idx', upload.single('thumb'), async(req,res)=>{
       category : category || getWebtoonResult[0].wt_category,
     }
     console.log(re);
-    const reviseWebttonQuery = "UPDATE spotoon.webtoon SET wt_title = ?, wt_author = ?, wt_thumbnail = ?, wt_like = ?, wt_category = ? WHERE wt_idx = ?";
+    const reviseWebttonQuery = "UPDATE webtoon SET wt_title = ?, wt_author = ?, wt_thumbnail = ?, wt_like = ?, wt_category = ? WHERE wt_idx = ?";
     const reviseWebtoonResult = await connection.query(reviseWebttonQuery,[re.title,re.author,re.thumb,re.like, re.category,wt_idx]);
     await connection.commit();
 
