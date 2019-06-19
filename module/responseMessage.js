@@ -27,7 +27,6 @@ module.exports = {
     POST_READ_FAILE:"게시글 읽어오기 실패",
     POST_READ_SUCCESS : "게시글 읽어오기 성공",
 
-<<<<<<< HEAD
     POST_EPISODE_SUCCESS : "에피소드 등록 성공",
     POST_EPISODE_FAIL : "에피소드 등록 실패",
     GET_EPISODE_LIST_SUCCESS : "에피소드 리스트 조회",
@@ -39,11 +38,9 @@ module.exports = {
     GET_EPISODE_CUTS_FAIL : "에피소드 컷 조회 실패",
     
     CMT_DELETE_SUCCESS: "댓글 삭제 성공",
-    CMT_DELETE_FAIL:"댓글 삭제 실패"
-=======
+    CMT_DELETE_FAIL:"댓글 삭제 실패",
     WEBTOON_SAVE_SUCCESS : "웹툰 저장 성공",
     WEBTOON_SAVE_FAILE : "웹툰 저장 실패 ",
     WEBTOON_REVISE_SUCCESS : "웹툰 수정 성공",
     WEBTOON_REVISE_FAILE : "웹툰 수정 실패",
->>>>>>> yeoni
 };
